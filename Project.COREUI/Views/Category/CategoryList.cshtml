@@ -1,0 +1,44 @@
+﻿@model CategoryVM
+
+
+@{
+    ViewData["Title"] = "CategoryList";
+}
+
+@TempData["message"]
+
+@if(Model.Categories.Count == 0)
+            {
+                <div>
+                    Henüz hicbir kategori eklenememiş... Kategori eklemek icin <a asp-action="AddCategory" asp-controller="Category">tıklayınız</a>
+                </div>
+            }
+            else
+            {
+                <div card card-header>
+                    <div class="card card-body">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Kategori İsmi</th>
+                                    <th>Kategori Acıklaması</th>
+                                    <th>Islemler</th>
+                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (Category item in Model.Categories)
+                                {
+                                    <tr>
+                                        <td>@item.CategoryName</td>
+                                        <td>@item.Description</td>
+                                        <td><a asp-controller="Category" asp-action="UpdateCategory" asp-route-id="@item.ID">Güncelle</a></td>
+                                        <td><a asp-controller="Category" asp-action="DeleteCategory" asp-route-id="@item.ID">Sil</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            }
+
