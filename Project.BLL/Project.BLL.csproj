@@ -12,4 +12,8 @@
     <ProjectReference Include="..\Project.DAL\Project.DAL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ServiceInjections\" />
+  </ItemGroup>
+
 </Project>
